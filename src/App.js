@@ -4,8 +4,10 @@ import debounce from './debounce.js';
 import Header from "./Header.js";
 import SuggestKeywords from './SuggestKeywords.js';
 import SearchResults from './SearchResults.js';
+import Card from './Card.js';
+import Popup from './popup.js';
 
-export default function App({$target}) {
+export default function App({$target, initialState}) {
     this.state = {
         keyword: '',
         keywords: [],
@@ -29,6 +31,7 @@ export default function App({$target}) {
         if(this.state.catImages.length > 0) {
             searchResults.setState(this.state.catImages)
         }
+
     }
 
     const header = new Header({
@@ -91,4 +94,27 @@ export default function App({$target}) {
             keywords: []
         })
     }
+
+    new Card({
+        $target,
+        initialState,
+        openPopup: (btnModal) => {
+            const dummy_data = initialState
+            if (btnModal.childElementCount==0){
+                let initialState = []
+            for(let i=0; i<dummy_data.length; i++){
+                if(dummy_data[i].name == btnModal.innerText){
+                    initialState = dummy_data[i]
+                }
+            }
+            const popup = new Popup(
+                btnModal,
+                initialState
+            )} 
+            else{   
+            }
+                
+        }    
+    }) 
+
 }

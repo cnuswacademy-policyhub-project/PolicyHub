@@ -1,8 +1,10 @@
-function Card({$target,initialState}){
+export default function Card({$target,initialState,openPopup}){
     const $container = document.createElement('div')
     $target.appendChild($container)
+    $container.setAttribute("id","card_container")
 
     this.state = initialState;
+  
 
     this.setState = nextState => {
         this.state = nextState
@@ -10,15 +12,23 @@ function Card({$target,initialState}){
     }
     
     this.render = () => {
-        $container.innerHTML =`
-            <ul>
-                ${this.state.map(({attribute,name,logo}) =>`
-                <div id = 'attribute'>${attribute}</div>
-                <div id = 'name'>${name}</div>
-                <div id = 'logo'>${logo}</div>`).join('')}
-            </ul>
-            `               
+        $container.innerHTML =
+                this.state.map(({attribute,name,logo}) =>`
+                <div id='card'>
+                    <ul>
+                        <div id = 'attribute'>${attribute}</div>
+                        <button id="btn-modal"  type = "button">${name}</button>
+                        <div id = 'logo'>${logo}</div>
+                    </ul>
+                </div>`).join('')          
     }
-    
     this.render()
+
+    const btnModal = document.querySelectorAll("#btn-modal")
+
+    for(let i=0;i<btnModal.length;i++){
+        btnModal[i].addEventListener("click", e => {
+            openPopup(e.target)
+        })  
+    }
 }
