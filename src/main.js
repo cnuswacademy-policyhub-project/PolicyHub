@@ -1,6 +1,6 @@
 import App from './App.js'
 
-const dummy_data = [
+export const dummy_data = [
     {
       name: '청년 창업 지원 정책',
       attribute: '청년',
