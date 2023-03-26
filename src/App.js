@@ -6,6 +6,7 @@ import SuggestKeywords from './SuggestKeywords.js';
 import SearchResults from './SearchResults.js';
 import Card from './Card.js';
 import Popup from './popup.js';
+import Footer from './footer.js';
 
 export default function App({$target, initialState}) {
     this.state = {
@@ -117,4 +118,7 @@ export default function App({$target, initialState}) {
         }    
     }) 
 
+    new Footer({
+        $target
+    })
 }
