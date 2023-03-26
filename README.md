@@ -1,3 +1,6 @@
+![header](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=header&text=PolicyHub&fontSize=90&animation=scaleIn&fontAlign=50)
+  
+
 # 2/8
 
 1. Figma 프로토타입을 기반으로 html 구조 상의
@@ -35,3 +38,5 @@
 4. MainLogo 글씨가 흐릿하여 수정함
 5. keyword창 글씨 중앙 정렬 및 placeholder가 다른 텍스트가 입력된 후에는 다시 뜨지 않게끔 설정함
 6. 배경화면 색 변경
+
+![footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=300&section=footer&text=함진규%20|%20박영규%20|%20나혜수%20|%20편민준&fontSize=90&animation=scaleIn&fontAlign=20)
