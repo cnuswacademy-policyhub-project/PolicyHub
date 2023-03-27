@@ -39,4 +39,8 @@
 5. keyword창 글씨 중앙 정렬 및 placeholder가 다른 텍스트가 입력된 후에는 다시 뜨지 않게끔 설정함
 6. 배경화면 색 변경
 
+7. 팝업 이벤트 오류 및 css 수정
+8. 카드 컴포넌트 css 추가 ( * 전체 css 적용시 카드 css 수정이 필요해 일단 주석처리 함) 및 css 통합 
+9. searchResult 보다 card가 먼저 뜨도록 App.js 수정 
+
 ![footer](https://capsule-render.vercel.app/api?type=waving&color=auto&height=150&section=footer&text=함진규%20|%20박영규%20|%20나혜수%20|%20편민준&fontSize=20&animation=scaleIn&fontAlign=50)
