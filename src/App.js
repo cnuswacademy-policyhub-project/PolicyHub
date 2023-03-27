@@ -100,22 +100,24 @@ export default function App({$target, initialState}) {
         $target,
         initialState,
         openPopup: (btnModal) => {
-            const dummy_data = initialState
+            const dummyData = dummy_data
+            // 팝업 창이 열려있으면 또 못열리게 함 
             if (btnModal.childElementCount==0){
-                let initialState = []
-            for(let i=0; i<dummy_data.length; i++){
-                if(dummy_data[i].name == btnModal.innerText){
-                    initialState = dummy_data[i]
+
+                for(let i=0; i<dummyData.length; i++){
+                    if(dummyData[i].name === btnModal.innerText){
+                        initialState = dummyData[i]
+                    }
                 }
+                const popup = new Popup({
+                    btnModal,
+                    initialState,
+                    onClose: () => {
+                        popup.setState(null)
+                }})
             }
-            const popup = new Popup(
-                btnModal,
-                initialState
-            )} 
-            else{   
-            }
-                
-        }    
+  
+        }  
     }) 
 
     new Footer({
