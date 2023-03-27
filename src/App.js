@@ -7,6 +7,7 @@ import SearchResults from './SearchResults.js';
 import Card from './Card.js';
 import Popup from './popup.js';
 import { dummy_data } from './main.js'
+import Footer from './footer.js';
 
 export default function App({$target, initialState}) {
     this.state = {
@@ -81,21 +82,6 @@ export default function App({$target, initialState}) {
         }
     })
 
-    const searchResults = new SearchResults({
-        $target,
-        initialState: this.state.catImages
-    })
-
-    const fetchCatsImage = async () => {
-        const {data} = await request(`/search?q=${this.state.keyword}`) 
-
-        this.setState({
-            ...this.state,
-            catImages: data,
-            keywords: []
-        })
-    }
-
     new Card({
         $target,
         initialState,
@@ -119,4 +105,25 @@ export default function App({$target, initialState}) {
   
         }  
     }) 
+
+    const searchResults = new SearchResults({
+        $target,
+        initialState: this.state.catImages
+    })
+
+    const fetchCatsImage = async () => {
+        const {data} = await request(`/search?q=${this.state.keyword}`) 
+
+        this.setState({
+            ...this.state,
+            catImages: data,
+            keywords: []
+        })
+    }
+
+    
+
+    new Footer({
+        $target
+    })
 }
