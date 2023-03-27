@@ -1,4 +1,4 @@
-export default function Popup(btnModal,initialState){
+export default function Popup({btnModal,initialState, onClose}){
     const $modal_bg = document.createElement('div')
     btnModal.appendChild($modal_bg)
     $modal_bg.setAttribute("class","modal-overlay")
@@ -7,16 +7,16 @@ export default function Popup(btnModal,initialState){
     
       
     this.state = initialState;
-
+  
     this.setState = nextState => {
         this.state = nextState
         this.render()
     }
     
     this.render = () => {
-        const {name,explain} = this.state
-        $modal_bg.innerHTML =`
-              
+        if(this.state){
+            const {name,explain} = this.state
+            $modal_bg.innerHTML =`
                     <div class="modal-window">
                         <div class="title">
                             <h2>${name}</h2>
@@ -28,19 +28,23 @@ export default function Popup(btnModal,initialState){
                         <div class = "detail">자세히 확인하기</div>
                     </div>
              ` 
-    
+        }  
+        else{ 
+            $modal_bg.remove()
+        }    
     }  
     
     this.render()
 
-    // btnModal.addEventListener("click", e => {
-    //     $modal_bg.style.display = "flex"
-    // })
+    const closeBtn = document.querySelector(".close-area")
+    console.log(closeBtn)
+    closeBtn.addEventListener('click', (e) => {
+        onClose()   
+    })
 
-    const closeBtn = document.querySelectorAll(".close-area")
-    const modal = document.querySelectorAll("#modal")
-    for(let i=0;i<modal.length;i++){
-        closeBtn[i].addEventListener("click", e => {
-            modal[i].style.visibility = "hidden" //display = 'none'??
-    })}
+    window.addEventListener('keyup', e => {
+        if(e.key === 'Escape'){
+            onClose()
+        }
+    })
 }
