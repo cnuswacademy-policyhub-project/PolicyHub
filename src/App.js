@@ -1,4 +1,4 @@
-import { request } from './api.js'
+import { policyRequest } from './api.js'
 import storage  from './storage.js'
 import debounce from './debounce.js';
 import Header from "./Header.js";
@@ -49,7 +49,7 @@ export default function App({$target, initialState}) {
                 if(this.cache[keyword]) {
                     keywords = this.cache[keyword]
                 } else {
-                    keywords = await request(`/keywords?q=${keyword}`)
+                    keywords = await policyRequest(`/search?q=${keyword}`)
                     this.cache[keyword] = keywords
                     storage.setItem('keywords_cache', this.cache)
                 }
@@ -78,7 +78,7 @@ export default function App({$target, initialState}) {
                 keyword,
                 keywords: []
             })
-            fetchCatsImage()
+            Card()
         }
     })
 
@@ -112,7 +112,7 @@ export default function App({$target, initialState}) {
     })
 
     const fetchCatsImage = async () => {
-        const {data} = await request(`/search?q=${this.state.keyword}`) 
+        const {data} = await policyRequest(`/search?q=${this.state.keyword}`) 
 
         this.setState({
             ...this.state,
